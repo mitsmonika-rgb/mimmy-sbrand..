@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mimmy'sbrand</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>mimmy'sbrand</h1>
+  <p>Beauty & Women's Products</p>
+  <input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
+</header>
+
+<section id="products">
+  <div class="product" data-name="lipstick makeup">
+    <h3>Lipstick</h3>
+    <button onclick="order('Lipstick')">Order Now</button>
+  </div>
+
+  <div class="product" data-name="hair clip accessory">
+    <h3>Hair Clip</h3>
+    <button onclick="order('Hair Clip')">Order Now</button>
+  </div>
+
+  <div class="product" data-name="makeup brush">
+    <h3>Makeup Brush</h3>
+    <button onclick="order('Makeup Brush')">Order Now</button>
+  </div>
+</section>
+
+<section class="payment">
+  <h2>Advance Payment Required</h2>
+  <p>To confirm your order, please send advance payment via bKash.</p>
+
+  <button onclick="showBkash()">Pay Advance via bKash</button>
+
+  <div id="bkashBox" style="display:none;">
+    <p><strong>bKash Number:</strong> 01731218212</p>
+    <p>Send payment and share screenshot via WhatsApp or Email.</p>
+  </div>
+</section>
+
+<section class="chat">
+  <a href="https://wa.me/8801731218212" target="_blank">
+    💬 Product Inquiry / Inbox
+  </a>
+</section>
+
+<footer>
+  <p>© mimmy'sbrand</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+    </html>
+   <style>
+     function searchProduct() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let products = document.querySelectorAll(".product");
+
+  products.forEach(p => {
+    let name = p.dataset.name;
+    p.style.display = name.includes(input) ? "block" : "none";
+  });
+}
+
+function showBkash() {
+  document.getElementById("bkashBox").style.display = "block";
+}
+
+function order(product) {
+  let message =
+`New Order - mimmy'sbrand
+Product: ${product}
+Payment: bKash Advance
+
+Please send payment screenshot to confirm order.`;
+
+  // Email
+  window.location.href =
+    "mailto:mitsmonika@gmail.com?subject=New Order&body=" +
+    encodeURIComponent(message);
+
+  // WhatsApp
+  window.open(
+    "https://wa.me/8801731218212?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
+<script>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #fff0f5;
+}
+
+header {
+  background: #ff69b4;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+header input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: none;
+  border-radius: 5px;
+}
+
+#products {
+  padding: 20px;
+}
+
+.product {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.product button {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.payment {
+  background: #ffe4ec;
+  padding: 20px;
+  text-align: center;
+}
+
+.payment button {
+  background: #ff1493;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chat a {
+  background: #25d366;
+  color: white;
+  padding: 12px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+}
